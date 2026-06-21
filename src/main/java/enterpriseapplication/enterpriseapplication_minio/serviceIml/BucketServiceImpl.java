@@ -4,6 +4,7 @@ import enterpriseapplication.enterpriseapplication_minio.dto.BucketRequest;
 import enterpriseapplication.enterpriseapplication_minio.exception.BucketNotFoundException;
 import enterpriseapplication.enterpriseapplication_minio.service.BucketService;
 import enterpriseapplication.enterpriseapplication_minio.validator.BucketValidator;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class BucketServiceImpl implements BucketService {
 
 
     private final S3Client s3Client;
+
     public BucketServiceImpl(S3Client s3Client) {
         this.s3Client = s3Client;
 

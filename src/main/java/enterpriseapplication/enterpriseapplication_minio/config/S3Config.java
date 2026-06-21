@@ -12,7 +12,7 @@ import java.net.URI;
 @Configuration
 public class S3Config {
        private final StorageProperties storage;
-       private S3Config(StorageProperties storage) {
+       public S3Config(StorageProperties storage) {
            this.storage = storage;
 
        };
@@ -21,7 +21,7 @@ public class S3Config {
         public S3Client s3Client() {
            return S3Client.builder()
                    .endpointOverride(
-                           URI.create(storage.getEndPoints()))
+                           URI.create(storage.getEndPoint()))
                    .credentialsProvider(
                            StaticCredentialsProvider.create(
                                    AwsBasicCredentials.create(

@@ -2,20 +2,22 @@ package enterpriseapplication.enterpriseapplication_minio.controller;
 
 import enterpriseapplication.enterpriseapplication_minio.dto.BucketRequest;
 import enterpriseapplication.enterpriseapplication_minio.service.BucketService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import software.amazon.awssdk.services.s3.model.Bucket;
 
 import java.util.List;
 
+
+@RequestMapping("/api/buckets")
 @RestController
 public class BucketController {
 
-    private final BucketService bucketService ;
+    @Autowired
+    private BucketService bucketService ;
 
-    private BucketController(BucketService service){
-        this.bucketService = service ;
-    }
 
     @PostMapping
     public ResponseEntity<Void> createBucket(@RequestBody BucketRequest bucketRequest){
@@ -34,6 +36,4 @@ public class BucketController {
         return bucketService.listBuckets() ;
 
     }
-
-
 }
